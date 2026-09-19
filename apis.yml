@@ -8,6 +8,14 @@ apis:
   - PSD2
   - XS2A
   - AIS
+  - PI
+  - Account Information
+  - Payment Initiation
+  tags_raw:
+  - Open Banking
+  - PSD2
+  - XS2A
+  - AIS
   - PIS
   - Account Information
   - Payment Initiation
@@ -115,6 +123,12 @@ apis:
   tags:
   - Open Banking
   - PSD2
+  - PI
+  - Payments
+  - Account-to-Account
+  tags_raw:
+  - Open Banking
+  - PSD2
   - PIS
   - Payments
   - Account-to-Account
@@ -133,7 +147,7 @@ tags:
 - Open Banking
 - PSD2
 - AIS
-- PIS
+- PI
 - Account Information
 - Payment Initiation
 - KYC

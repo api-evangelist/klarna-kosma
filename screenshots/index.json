@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "klarna-kosma",
+    "captured_at": "2026-10-11T190244",
+    "source_url": "https://www.klarna.com/kosma/",
+    "source_type": "Portal",
+    "file": "klarna-kosma-2026-10-11T190244.png",
+    "bytes": 92371,
+    "capture": "playwright-local"
+  }
+]

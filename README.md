@@ -64,70 +64,95 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Klarna Kosma is the Open Banking platform that Klarna spun out in March 2022 as a dedicated sub-brand and business unit. Built on the connectivity infrastructure Klarna originally created for SOFORT, Kosma packages PSD2 Account Information Services (AIS) and Payment Initiation Services (PIS) into a single XS2A API that aggregates more than 15,000 banks across 27 European and UK markets with >95% per-market coverage. The same platform powers Klarna's own BNPL underwriting and is sold externally to banks, lenders, fintechs, merchants, SMEs, and freelancers.
+Klarna Kosma is the Open Banking platform spun out of Klarna in March 2022 as a dedicated sub-brand and business unit. Built on the connectivity infrastructure Klarna originally created for SOFORT, Kosma offers a single PSD2 XS2A API that aggregates more than 15,000 banks across 27 European and UK markets with >95% per-market coverage. The platform exposes Account Information Services (AIS) and Payment Initiation Services (PIS) plus higher-level products — Kosma Insights (categorised transaction, income, and affordability data across 200+ categories), Kosma KYC (account ownership and identity verification), and Kosma Payments (white-labeled account-to-account bank transfers). Kosma serves banks, lenders, fintechs, merchants, SMEs, and freelancers, and also powers Klarna's own BNPL underwriting and SOFORT bank-transfer rails. The XS2A API is paired with an embeddable XS2A App / JS widget that handles consumer bank selection and Strong Customer Authentication (SCA), and a Consent API that exposes the full PSD2 consent lifecycle.
 
-This catalog entry profiles Klarna Kosma's public API surface as of May 2026. Kosma does not publish downloadable OpenAPI specifications for its XS2A, Auth, Consent, Insights, KYC, or Payments APIs, so this repository is documentation-only: no `openapi/`, `capabilities/`, `rules/`, `json-schema/`, `json-structure/`, `json-ld/`, `examples/`, or `vocabulary/` artifacts are generated. The `apis.yml` captures the documented APIs, products, environments, and tooling. If Kosma publishes machine-readable specs in the future, they should be added under the canonical artifact subfolders.
+**Areas:** Open Banking · PSD2 · AIS · PI · Account Information · Payment Initiation · KYC · Identity Verification · Categorization · Insights · Embedded Finance · Buy Now Pay Later
 
-## APIs
+## Klarna Kosma on APIs.io
 
-### Klarna Kosma XS2A API
-The XS2A API is the server-side endpoint set used by TPPs and merchants to create and control Open Banking sessions and flows under PSD2. It drives AIS (accounts, balances, transactions) and PIS (account-to-account transfers). Sessions are created against `api.openbanking.klarna.com` (production) or `api.openbanking.playground.klarna.com` (sandbox); the resulting token is handed to the XS2A App for the consumer-facing SCA flow.
+Everything profiled for Klarna Kosma is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/klarna-kosma/](https://apis.io/providers/klarna-kosma/)** — or go straight to one of the APIs or properties below.
 
-### Klarna Kosma Auth API
-The client-session companion to the XS2A API, hosted at `authapi.openbanking.klarna.com`. Whenever the flow requires consumer interaction (bank selection, SCA, multi-step forms), the Auth API exposes the session-scoped endpoints used to obtain and submit forms. It is the API surface behind the embeddable XS2A App / JavaScript SDK.
+### APIs (6)
 
-### Klarna Kosma Consent API
-The Consent API exposes the PSD2 consent lifecycle so TPPs can list, inspect, refresh, and revoke consents granted by Payment Service Users (PSU). PSD2 requires that Klarna and its clients keep PSU information aligned with active consents — the Consent API is the programmatic surface for meeting that obligation.
+- [Klarna Kosma XS2A API](https://apis.io/apis/klarna-kosma/klarna-kosma-xs2a-api/) — The XS2A API is the server-side endpoint set used by TPPs and merchants to create and control Open Banking sessions and flows under PSD2. The XS2A API…
+- [Klarna Kosma Auth API](https://apis.io/apis/klarna-kosma/klarna-kosma-auth-api/) — The Auth API is the client-session companion to the XS2A API. Whenever the Open Banking flow requires consumer interaction (bank selection, strong customer…
+- [Klarna Kosma Consent API](https://apis.io/apis/klarna-kosma/klarna-kosma-consent-api/) — The Consent API exposes the PSD2 consent lifecycle so TPPs can list, inspect, refresh, and revoke the consents granted by Payment Service Users (PSU). PSD2…
+- [Klarna Kosma Insights API](https://apis.io/apis/klarna-kosma/klarna-kosma-insights-api/) — Kosma Insights turns raw Open Banking transaction data into categorised spend, income, and affordability signals. Insights covers 200+ spend categories and…
+- [Klarna Kosma KYC API](https://apis.io/apis/klarna-kosma/klarna-kosma-kyc-api/) — Kosma KYC layers account ownership and identity verification on top of the Kosma AIS connectivity. It confirms that the consumer authenticating against…
+- [Klarna Kosma Payments API](https://apis.io/apis/klarna-kosma/klarna-kosma-payments-api/) — Kosma Payments is the white-labeled PSD2 Payment Initiation Service (PIS) product. It lets merchants and platforms trigger account-to-account bank transfers…
 
-### Klarna Kosma Insights API
-Kosma Insights turns raw Open Banking transaction data into categorised spend, income, and affordability signals across 200+ categories. It surfaces income streams, recurring outflows, and cash-flow patterns, and is the AIS-derived data product behind Klarna's own BNPL underwriting and the same product sold externally to lenders, fintechs, and merchants.
+### Published properties
 
-### Klarna Kosma KYC API
-Kosma KYC layers account ownership and identity verification on top of AIS connectivity. It confirms that the authenticating consumer is the legitimate account holder, returns verified attributes, and supports KYC, AML, and onboarding workflows for lenders, fintechs, neobanks, and crypto on-ramps across the EEA and UK.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Klarna Kosma Payments API
-Kosma Payments is the white-labeled PSD2 PIS product. It triggers account-to-account bank transfers directly from a consumer's bank, bypassing card rails. Sessions are created against `/xs2a/v1/sessions` on the XS2A API; the consumer authenticates via the XS2A App; Kosma orchestrates SCA and settlement confirmation with the ASPSP.
+#### Security (2)
 
-## Environments
+Authentication, trust centre, and vulnerability disclosure.
 
-| Environment | Base URL |
+- [Klarna Kosma Domain Security](https://apis.io/security/klarna-kosma/klarna-kosma-domain-security/)
+- [Klarna Kosma Vulnerability Disclosure](https://apis.io/security/klarna-kosma/klarna-kosma-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.klarna.com/)
+- [Documentation](https://docs.openbanking.klarna.com/)
+- [Getting started](https://docs.openbanking.klarna.com/index.html)
+- [Support](https://www.klarna.com/kosma/)
+- [Terms of service](https://www.klarna.com/legal/)
+- [Privacy policy](https://www.klarna.com/international/privacy-notice/)
+- [GitHub](https://github.com/klarna)
+
+## API Evangelist rating
+
+**Kin Score 24.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| Production XS2A API | `https://api.openbanking.klarna.com` |
-| Production Auth API | `https://authapi.openbanking.klarna.com` |
-| Playground XS2A API | `https://api.openbanking.playground.klarna.com` |
+| Discoverability | 71.4 |
+| Contract quality | 6.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 21.1 |
 
-A PSD2 test bank supports embedded, decoupled, and redirect SCA methods plus consent management.
+**Agent readiness 3.8** — human-only
 
-## Tags
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-Open Banking, PSD2, AIS, PIS, Account Information, Payment Initiation, KYC, Identity Verification, Categorization, Insights, Embedded Finance, BNPL, Lending, Fintech, Banking.
+**Regulatory alignment 20.5** — Banking & Open Finance
 
-## Key Features
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/klarna-kosma/](https://apis.io/providers/klarna-kosma/).
 
-- PSD2-licensed AIS and PIS across the EEA and UK via Klarna Bank AB (publ)
-- Single XS2A API aggregating 15,000+ banks in 27 countries with >95% per-market coverage
-- Embeddable XS2A App / JavaScript widget for consumer bank selection and Strong Customer Authentication
-- Auth API for client-session consumer interactions
-- Consent API covering the full PSD2 consent lifecycle
-- Kosma Insights — transaction categorisation across 200+ categories with income and affordability signals
-- Kosma KYC — account ownership and identity verification on top of AIS connectivity
-- Kosma Payments — white-labeled PSD2 PIS for merchant checkout and platform payouts
-- Sandbox environment with PSD2 test bank covering all three SCA methods
-- Underpins Klarna's own BNPL underwriting and SOFORT bank-transfer rails
+## How this profile is made
 
-## Resources
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- Portal — [klarna.com/kosma](https://www.klarna.com/kosma/)
-- Documentation — [docs.openbanking.klarna.com](https://docs.openbanking.klarna.com/)
-- XS2A API URLs and environments — [docs.openbanking.klarna.com/xs2a/urls.html](https://docs.openbanking.klarna.com/xs2a/urls.html)
-- XS2A App — [docs.openbanking.klarna.com/xs2a/xs2a-app.html](https://docs.openbanking.klarna.com/xs2a/xs2a-app.html)
-- PSD2 test bank — [docs.openbanking.klarna.com/xs2a/test-bank-psd2.html](https://docs.openbanking.klarna.com/xs2a/test-bank-psd2.html)
-- AIS Quick Start — [docs.openbanking.klarna.com/xs2a/quick-start-ais-accounts.html](https://docs.openbanking.klarna.com/xs2a/quick-start-ais-accounts.html)
-- PIS Quick Start — [docs.openbanking.klarna.com/xs2a/quick-start-pis.html](https://docs.openbanking.klarna.com/xs2a/quick-start-pis.html)
-- Klarna GitHub — [github.com/klarna](https://github.com/klarna)
-- UK Open Banking listing — [openbanking.org.uk/regulated-providers/klarna-kosma](https://www.openbanking.org.uk/regulated-providers/klarna-kosma/)
-- Launch press release (March 2022) — [klarna.com/international/press](https://www.klarna.com/international/press/klarna-launches-klarna-kosma-sub-brand-and-business-unit-to-harness-rapid-growth-of-open-banking-platform/)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Klarna Kosma: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-## Maintainer
+## Open an issue
 
-Kin Lane — API Evangelist — [apievangelist.com](https://apievangelist.com)
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/klarna-kosma/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
